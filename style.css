@@ -785,3 +785,32 @@ footer>a:last-child {
   opacity:.6}
 }
 
+
+/* A single stationary world; the story scrolls above it. */
+.night-scene{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 52% 81%,#454171 0,transparent 46%),radial-gradient(ellipse at 80% 26%,#1d2953 0,transparent 40%),linear-gradient(#070d23,#101b3d 62%,#151d3a)}
+main{position:relative;z-index:1}
+.hero{background:none;isolation:auto}
+.hero-content,.hero-bottom{z-index:1}
+.about,.interests,.contact{background:linear-gradient(90deg,#080e26ed,#080e26c9 50%,#080e26ed);backdrop-filter:blur(3px)}
+.about{border-top:1px solid #d5c39a18}
+.night-scene .stars{z-index:3}
+.night-scene .star{filter:blur(.65px);animation:twinkle var(--duration) ease-in-out infinite alternate,star-drift 32s ease-in-out infinite alternate;animation-delay:var(--delay)}
+.night-scene .star.large{filter:blur(1.2px);box-shadow:0 0 13px 2px #e0d0ff70}
+.night-scene .star.cross{filter:blur(.4px)}
+.aurora{position:absolute;top:5%;left:-20%;width:140%;height:65%;background:radial-gradient(ellipse at 40% 50%,#74c5b41c,transparent 48%),radial-gradient(ellipse at 66% 40%,#9b79d326,transparent 52%);filter:blur(40px);transform:rotate(-15deg);animation:aurora-sway 24s ease-in-out infinite alternate}
+.mist{position:absolute;bottom:12%;left:-25%;width:130%;height:15%;background:radial-gradient(ellipse,#c1c0df15,transparent 66%);filter:blur(20px);z-index:3;animation:mist-drift 35s ease-in-out infinite alternate}
+.mist-two{bottom:21%;opacity:.5;animation-delay:-19s;animation-direction:alternate-reverse}
+.wildlife{position:absolute;inset:0;width:100%;height:100%;z-index:3}
+.deer-family{animation:deer-breathe 6s ease-in-out infinite;transform-origin:220px 650px}
+.owl-flight{animation:owl-flight 48s linear infinite}
+.fireflies{position:absolute;inset:0;z-index:4}
+.fireflies span{position:absolute;width:3px;height:3px;border-radius:50%;background:#f3dfa1;box-shadow:0 0 9px 3px #f6d58965;filter:blur(.5px);animation:firefly-drift var(--duration) ease-in-out infinite alternate;animation-delay:var(--delay)}
+.scene-paused .night-scene *{animation-play-state:paused!important}
+@keyframes star-drift{from{transform:translate3d(-10px,8px,0)}to{transform:translate3d(24px,-18px,0)}}
+@keyframes aurora-sway{to{transform:rotate(9deg) translate3d(6%,8%,0);opacity:.55}}
+@keyframes mist-drift{to{transform:translate3d(20%,0,0)}}
+@keyframes firefly-drift{0%{transform:translate3d(0,0,0);opacity:.15}40%{opacity:.85}100%{transform:translate3d(35px,-60px,0);opacity:.25}}
+@keyframes deer-breathe{50%{transform:scaleY(1.018) rotate(.3deg)}}
+@keyframes owl-flight{0%{transform:translate(-100px,270px);opacity:0}10%,85%{opacity:.45}50%{transform:translate(780px,185px)}100%{transform:translate(1700px,260px);opacity:0}}
+@media(max-width:600px){.night-scene .landscape{height:40vh;min-height:300px}.night-scene .moon{top:145px}.wildlife{width:160%;left:-30%}.about,.interests,.contact{backdrop-filter:none;background:#080e26db}}
+@media(prefers-reduced-motion:reduce){.night-scene *{animation:none!important}.owl-flight{transform:translate(1100px,250px)}.star{opacity:.55}}

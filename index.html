@@ -20,13 +20,16 @@
     <nav aria-label="Main navigation">
       <a href="#home" aria-current="location">Home</a><a href="#about">My story</a><a href="#interests">Little wonders</a><a href="#contact">Say hello <span aria-hidden="true">↗</span></a>
     </nav>
-    <button class="sound-button" id="musicToggle" type="button" aria-pressed="false"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="soundLabel">Sound off</span></button>
+    <button class="sound-button" id="musicToggle" type="button" aria-pressed="false"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="soundLabel">Enable ambience</span></button>
   </header>
-  <main id="main">
-    <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="stars" aria-hidden="true"></div>
+  <div class="night-scene" aria-hidden="true">      <div class="stars" aria-hidden="true"></div>
       <div class="shooting-star" aria-hidden="true"></div>
       <div class="moon" aria-hidden="true"></div>
+      <img class="landscape" src="assets/night-kingdom.svg" alt="" width="1600" height="720"><div class="aurora"></div><div class="mist mist-one"></div><div class="mist mist-two"></div>
+<svg class="wildlife" viewBox="0 0 1600 720" preserveAspectRatio="none"><defs><g id="deer"><path d="M0 38Q18 24 47 36L65 17 72 18 66 37 53 48 45 55H16L7 50 2 75H-3L-1 46ZM18 51 22 77H27L26 51M43 49 47 74H52L51 45M66 20 62 3 55-2M63 10 72 3M64 14 55 8" fill="currentColor" stroke="currentColor" stroke-width="2"/><path d="m69 20 11-3-6 10" fill="currentColor"/></g></defs><g class="deer-family" fill="#111d32" color="#111d32"><use href="#deer" transform="translate(175 574) scale(.9)"/><use href="#deer" transform="translate(252 603) scale(.55)"/></g><g class="owl-flight" fill="none" stroke="#b7b8cf" stroke-width="2" opacity=".5"><path d="M0 0Q12-12 24 0Q36-12 48 0"/><path d="M-50 22Q-41 13-32 22Q-23 13-14 22"/></g></svg>
+<div class="fireflies"></div></div>
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="hero-content">
         <p class="eyebrow"><span></span> A LITTLE CORNER. A LITTLE MAGIC. <span></span></p>
         <h1 id="hero-title">Every dream begins<br>with a little <em>wonder.</em></h1>
@@ -34,7 +37,7 @@
         <a class="button primary" href="#about">Step into my world <span aria-hidden="true">✧</span></a>
         <span class="hero-caption">BUSINESS MIND. CREATIVE SOUL. ENDLESS CURIOSITY.</span>
       </div>
-      <img class="landscape" src="assets/night-kingdom.svg" alt="" width="1600" height="720">
+
       <div class="hero-bottom"><span>NEW DELHI, INDIA <span class="tiny-star">✦</span> UNDER THE SAME STARS</span><a href="#about">THE STORY UNFOLDS <span aria-hidden="true">↓</span></a><span>EST. IN CURIOSITY</span></div>
     </section>
     <section class="about section-wrap" id="about" aria-labelledby="about-title">
@@ -62,6 +65,6 @@
     </section>
   </main>
   <p class="sr-only" id="audioStatus" role="status"></p>
-  <audio id="bgMusic" loop preload="none" src="royalty-free-ambient.wav"></audio>
+  <audio id="bgMusic" loop autoplay preload="auto" src="assets/beautiful-zen-sounds.mp3"></audio>
 </body>
 </html>

@@ -14,26 +14,47 @@ for (let i = 0; i < 100; i++) {
 }
 starField.append(stars);
 
+const fireflies = document.querySelector('.fireflies');
+for (let i = 0; i < 22; i++) {
+  const fly = document.createElement('span');
+  fly.style.cssText = `left:${random()*100}%;top:${60+random()*35}%;--delay:${-random()*20}s;--duration:${9+random()*12}s`;
+  fireflies.append(fly);
+}
 const music = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
 const soundLabel = document.getElementById('soundLabel');
 const audioStatus = document.getElementById('audioStatus');
-music.volume = 0.35;
+let manuallyPaused = false;
+let playingAttempt = false;
+music.volume = 0.3;
 function updateSound() {
   const playing = !music.paused;
   musicToggle.setAttribute('aria-pressed', String(playing));
   musicToggle.classList.toggle('is-on', playing);
-  soundLabel.textContent = playing ? 'Sound on' : 'Sound off';
+  soundLabel.textContent = playing ? 'Mute ambience' : 'Enable ambience';
+}
+async function startAmbience(explicit = false) {
+  if (manuallyPaused || playingAttempt || !music.paused) return;
+  playingAttempt = true;
+  try { await music.play(); audioStatus.textContent = ''; }
+  catch { if (explicit) audioStatus.textContent = 'Audio could not start. Tap Enable ambience to try again.'; }
+  finally { playingAttempt = false; updateSound(); }
 }
 music.addEventListener('play', updateSound);
 music.addEventListener('pause', updateSound);
-musicToggle.addEventListener('click', async () => {
-  audioStatus.textContent = '';
-  if (!music.paused) { music.pause(); return; }
-  musicToggle.disabled = true;
-  try { await music.play(); }
-  catch { audioStatus.textContent = 'The music could not play. Please try again.'; updateSound(); }
-  finally { musicToggle.disabled = false; }
+musicToggle.addEventListener('click', () => {
+  if (!music.paused) { manuallyPaused = true; music.pause(); }
+  else { manuallyPaused = false; startAmbience(true); }
+});
+// Audible autoplay may require a user gesture. Never restart after an explicit mute.
+for (const event of ['pointerdown', 'keydown']) {
+  document.addEventListener(event, e => {
+    if (!e.target.closest('#musicToggle') && !manuallyPaused) startAmbience();
+  });
+}
+startAmbience();
+document.addEventListener('visibilitychange', () => {
+  document.documentElement.classList.toggle('scene-paused', document.hidden);
 });
 
 const navLinks = [...document.querySelectorAll('nav a')];
