@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 720" fill="none">
+<defs>
+ <linearGradient id="water" x1="800" y1="390" x2="800" y2="720" gradientUnits="userSpaceOnUse"><stop stop-color="#293555"/><stop offset=".5" stop-color="#111e38"/><stop offset="1" stop-color="#080e26"/></linearGradient>
+ <linearGradient id="tower" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#677194"/><stop offset=".5" stop-color="#394668"/><stop offset="1" stop-color="#24314e"/></linearGradient>
+ <linearGradient id="reflection" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d3be9550"/><stop offset="1" stop-color="#c4b0df00"/></linearGradient>
+ <radialGradient id="haze"><stop stop-color="#afa0d3" stop-opacity=".18"/><stop offset="1" stop-color="#938ac6" stop-opacity="0"/></radialGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="3"/></filter>
+ <g id="pine"><path d="M0 0-14 35-7 33-24 57-13 55-34 84H-6V105H6V84H34L13 55 24 57 7 33 14 35Z" fill="currentColor"/></g>
+ <g id="window"><path d="M0 8V3a3 3 0 0 1 6 0v5Z" fill="#f2d29b"/><path d="M0 8V3a3 3 0 0 1 6 0v5Z" fill="#ffd99b" filter="url(#glow)" opacity=".7"/></g>
+</defs>
+<!-- Layered hills, a distant kingdom and its quiet lake. -->
+<ellipse cx="870" cy="385" rx="530" ry="170" fill="url(#haze)"/>
+<path d="M0 312Q110 231 249 287T430 319Q563 260 675 320T900 296Q1061 199 1220 286T1600 205V510H0Z" fill="#2b3657" opacity=".7"/>
+<path d="M0 327Q131 289 268 351T527 351Q669 306 817 346T1092 319Q1359 246 1600 332V500H0Z" fill="#202e4c"/>
+<path d="M0 403Q296 370 450 405T811 403Q1114 361 1600 395V720H0Z" fill="url(#water)"/>
+<path d="M420 420Q772 405 1190 420M563 435Q782 421 1050 431M617 458Q785 445 1010 451M679 482Q829 467 956 477M702 502Q830 497 910 503" stroke="#8e91b6" stroke-opacity=".14"/>
+<!-- Original fairytale castle silhouette. -->
+<g transform="translate(945 138)">
+ <path d="M-133 247Q-50 214 71 237L139 267H-160Z" fill="#182841"/>
+ <path d="M-109 244V177H-73V244M-72 243V148H-37V242M-37 244V122H10V244M10 243V155H52V243M52 242V185H99V249" fill="url(#tower)"/>
+ <path d="M-46 124  -14 80 18 124Z" fill="#222e4b"/><path d="M-67 149-53 117-36 149ZM8 158 31 125 57 158ZM-115 180-90 147-66 180ZM47 187 77 154 105 187Z" fill="#2b3453"/>
+ <path d="M-29 124V56H0V124" fill="url(#tower)"/><path d="M-35 58-15 5 6 58Z" fill="#29354f"/><path d="M-15 6V-15M-15-15 5-9-15-3" stroke="#c0af9a" stroke-width="1"/>
+ <path d="M-60 157V97H-45V157M28 172V83H46V173" fill="url(#tower)"/><path d="M-65 98-53 71-40 98ZM23 84 37 50 51 84Z" fill="#2b3555"/>
+ <path d="M-111 246V198H-94V246M79 247V192H99V247" fill="url(#tower)"/><path d="M-116 200-103 171-89 200ZM73 194 89 162 105 194Z" fill="#283350"/>
+ <path d="M-84 228H75V249H-84Z" fill="#34415f"/>
+ <path d="M-71 232V222H-62V232H-51V222H-42V232H-31V222H-22V232H-11V222H-2V232H9V222H18V232H29V222H38V232H49V222H58V232H69V222H78V249H-80V232Z" fill="#45516b"/>
+ <path d="M-17 249V233a11 11 0 0 1 22 0v16" fill="#e4bd82" opacity=".8"/>
+ <use href="#window" x="-18" y="68"/><use href="#window" x="-18" y="92"/><use href="#window" x="-24" y="147"/><use href="#window" x="-7" y="147"/><use href="#window" x="-24" y="172"/><use href="#window" x="-7" y="172"/><use href="#window" x="-55" y="109"/><use href="#window" x="34" y="98"/><use href="#window" x="34" y="121"/><use href="#window" x="-91" y="191"/><use href="#window" x="-54" y="168"/><use href="#window" x="28" y="180"/><use href="#window" x="73" y="203"/>
+ <path d="M-123 253Q-14 234 122 257" stroke="#8c8294" stroke-opacity=".3"/>
+</g>
+<path d="m928 404-50 154h142l-63-154Z" fill="url(#reflection)" opacity=".55"/>
+<path d="M913 424h56m-66 11h73m-85 12h91m-88 14h104m-98 17h86m-102 16h120m-93 19h67" stroke="#d8c69d" stroke-opacity=".19" stroke-width="2"/>
+<!-- Shorelines and foreground pines frame the scene. -->
+<path d="M0 381Q131 350 275 390T565 426L404 451Q248 443 137 477L0 484Z" fill="#101e35"/>
+<path d="M1600 352Q1454 350 1321 400T1110 416L1244 439Q1460 426 1600 462Z" fill="#101b32"/>
+<g color="#12223a"><use href="#pine" transform="translate(90 228) scale(1.8)"/><use href="#pine" transform="translate(176 280) scale(1.4)"/><use href="#pine" transform="translate(245 313) scale(.9)"/><use href="#pine" transform="translate(320 350) scale(.65)"/><use href="#pine" transform="translate(1340 274) scale(1.2)"/><use href="#pine" transform="translate(1410 232) scale(1.6)"/><use href="#pine" transform="translate(1500 208) scale(2)"/></g>
+<path d="M0 470Q133 459 257 510T544 577Q290 579 129 625L0 639ZM1600 454Q1415 477 1356 528T1117 594Q1470 544 1600 617Z" fill="#0a152b"/>
+<g color="#091429"><use href="#pine" transform="translate(15 150) scale(3.6)"/><use href="#pine" transform="translate(101 287) scale(2.7)"/><use href="#pine" transform="translate(180 364) scale(1.7)"/><use href="#pine" transform="translate(1493 279) scale(2.5)"/><use href="#pine" transform="translate(1590 137) scale(4)"/></g>
+<path d="M0 594Q156 557 301 645L433 720H0ZM1600 577Q1430 577 1308 664L1190 720H1600Z" fill="#080e26"/>
+<g fill="#e4d4a0"><circle cx="249" cy="463" r="2"/><circle cx="345" cy="482" r="1.5"/><circle cx="189" cy="526" r="2"/><circle cx="420" cy="551" r="1.5"/><circle cx="1260" cy="483" r="2"/><circle cx="1401" cy="466" r="1.5"/><circle cx="1174" cy="549" r="1.5"/></g>
+<g fill="#e4d4a0" filter="url(#glow)" opacity=".7"><circle cx="249" cy="463" r="3"/><circle cx="189" cy="526" r="3"/><circle cx="1260" cy="483" r="3"/></g>
+</svg>
