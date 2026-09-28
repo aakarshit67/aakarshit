@@ -3,107 +3,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Aakarshit Kumar. A small corner of the internet.">
-  <title>Aakarshit / A little corner</title>
+  <meta name="theme-color" content="#080e26">
+  <meta name="description" content="Aakarshit Kumar — a dreamer from Delhi, exploring business, fashion, technology and the little wonders in between.">
+  <title>Aakarshit · A little world of wonder</title>
+  <link rel="icon" href="assets/star.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="grain"></div>
-  <div class="cursor-dot"></div>
-  <div class="cursor-ring"></div>
-
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="topbar">
-    <a class="mark" href="#home" aria-label="Home">
-      <span class="mark-box">↯</span>
-      <span>AK&nbsp; / &nbsp;26</span>
-    </a>
-    <div class="top-status">DELHI, IN <span>●</span> ONLINE</div>
-    <button class="music" id="musicToggle" type="button" aria-pressed="false">Ⅲ&nbsp; MUSIC / OFF</button>
-  </header>
-
-  <aside class="index">
-    <div class="index-rule"></div>
-    <div class="index-title">INDEX / 00–04</div>
-    <nav>
-      <a href="#home" data-section="home">01&nbsp;&nbsp; HOME</a>
-      <a href="#about" data-section="about">02&nbsp;&nbsp; ABOUT</a>
-      <a href="#interests" data-section="interests">03&nbsp;&nbsp; INTERESTS</a>
-      <a href="#contact" data-section="contact">04&nbsp;&nbsp; CONTACT</a>
+    <a class="wordmark" href="#home" aria-label="Aakarshit, home"><span aria-hidden="true">✧</span> aakarshit<span class="wordmark-dot">.</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#home" aria-current="location">Home</a><a href="#about">My story</a><a href="#interests">Little wonders</a><a href="#contact">Say hello <span aria-hidden="true">↗</span></a>
     </nav>
-  </aside>
-
-  <main>
-    <section class="section hero" id="home">
-      <div class="hero-orbit orbit-one"></div>
-      <div class="hero-orbit orbit-two"></div>
-      <div class="hero-text">
-        <div class="micro hero-kicker">AAKARSHIT KUMAR&nbsp;&nbsp;&nbsp;&nbsp; DELHI / INDIA</div>
-        <h1>
-          <span class="sans">WELCOME</span>
-          <span class="sans indent">TO MY</span>
-          <span class="serif">LITTLE</span>
-          <span class="outline">CORNER</span>
-          <span class="sans final-line">OF THE INTERNET.</span>
-        </h1>
+    <button class="sound-button" id="musicToggle" type="button" aria-pressed="false"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="soundLabel">Enable ambience</span></button>
+  </header>
+  <div class="night-scene" aria-hidden="true">      <div class="stars" aria-hidden="true"></div>
+      <div class="shooting-star" aria-hidden="true"></div>
+      <div class="moon" aria-hidden="true"></div>
+      <img class="landscape" src="assets/night-kingdom.svg" alt="" width="1600" height="720"><div class="aurora"></div><div class="mist mist-one"></div><div class="mist mist-two"></div>
+<svg class="wildlife" viewBox="0 0 1600 720" preserveAspectRatio="none"><defs><g id="deer"><path d="M0 38Q18 24 47 36L65 17 72 18 66 37 53 48 45 55H16L7 50 2 75H-3L-1 46ZM18 51 22 77H27L26 51M43 49 47 74H52L51 45M66 20 62 3 55-2M63 10 72 3M64 14 55 8" fill="currentColor" stroke="currentColor" stroke-width="2"/><path d="m69 20 11-3-6 10" fill="currentColor"/></g></defs><g class="deer-family" fill="#111d32" color="#111d32"><use href="#deer" transform="translate(175 574) scale(.9)"/><use href="#deer" transform="translate(252 603) scale(.55)"/></g><g class="owl-flight" fill="none" stroke="#b7b8cf" stroke-width="2" opacity=".5"><path d="M0 0Q12-12 24 0Q36-12 48 0"/><path d="M-50 22Q-41 13-32 22Q-23 13-14 22"/></g></svg>
+<div class="fireflies"></div><div class="dream-cloud cloud-one"></div><div class="dream-cloud cloud-two"></div><div class="dream-cloud cloud-three"></div><div class="dream-orbs"></div><svg class="light-ribbons" viewBox="0 0 1600 900" preserveAspectRatio="none"><defs><linearGradient id="ribbon-glow"><stop stop-color="#90e9da" stop-opacity="0"/><stop offset=".5" stop-color="#c6b4ff" stop-opacity=".6"/><stop offset="1" stop-color="#f2d393" stop-opacity="0"/></linearGradient></defs><path d="M-200 650 Q300 80 850 340 T1800 100"/><path d="M-200 700 Q350 150 850 390 T1800 140"/><path d="M-200 600 Q250 40 850 280 T1800 70"/></svg><div class="lake-shimmer"></div></div>
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow"><span></span> A LITTLE CORNER. A LITTLE MAGIC. <span></span></p>
+        <h1 id="hero-title">Every dream begins<br>with a little <em>wonder.</em></h1>
+        <p class="hero-intro">Hi, I'm Aakarshit. A curious mind from Delhi,<br>finding a little magic in the everyday.</p>
+        <a class="button primary" href="#about">Step into my world <span aria-hidden="true">✧</span></a>
+        <span class="hero-caption">BUSINESS MIND. CREATIVE SOUL. ENDLESS CURIOSITY.</span>
       </div>
-      <div class="hero-meta left-meta">INDEX / 00–04</div>
-      <div class="hero-meta right-meta">28°36'36.5"N<br>77°13'48.0"E</div>
-      <div class="field-note">FIELD NOTE / 001<br><span>A SMALL PERSONAL ARCHIVE</span></div>
-      <div class="hero-dot"></div>
-      <div class="scroll-cue">⌞ <span>SCROLL TO CONTINUE</span> <b>↓</b></div>
-      <div class="hero-bottom-note">BBA / 2026&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;TRAVEL / IDEAS / VISUALS</div>
+
+      <div class="hero-bottom"><span>NEW DELHI, INDIA <span class="tiny-star">✦</span> UNDER THE SAME STARS</span><a href="#about">THE STORY UNFOLDS <span aria-hidden="true">↓</span></a><span>EST. IN CURIOSITY</span></div>
     </section>
-
-    <section class="section about" id="about">
-      <div class="light-grid"></div>
-      <div class="section-kicker">NOT A RÉSUMÉ / A GLIMPSE INSTEAD</div>
-      <h2>I'm <em>Aakarshit,</em><br>usually just<br><strong>Akki.</strong></h2>
-      <div class="about-copy">
-        <p>I'm Aakarshit Kumar, usually just Aakarshit or Akki. I'm a BBA student from Delhi who enjoys exploring the space between business, fashion, technology, travelling and creative ideas.</p>
-        <p>I like discovering new things, experimenting with concepts and turning random ideas into something that feels interesting, useful or visually different. I'm especially drawn to things that combine creativity with a little bit of strategy.</p>
-        <p>This isn't a résumé. It's a small piece of the internet that gives you a glimpse into what I like, what I'm curious about and the kind of things I enjoy creating.</p>
+    <section class="about section-wrap" id="about" aria-labelledby="about-title">
+      <div class="chapter"><span>01 / MY STORY</span><span aria-hidden="true">✧</span><span>A DREAMER, AT HEART</span></div>
+      <div class="about-grid">
+        <div class="story-art" aria-hidden="true"><div class="story-frame"><span class="art-star s1">✧</span><span class="art-star s2">✦</span><span class="art-star s3">✧</span><div class="small-moon"></div><div class="art-hill hill-back"></div><div class="art-hill hill-front"></div><div class="art-path"></div><span class="art-quote">Stay curious.<br><em>There's more to the story.</em></span></div><span class="art-note">A SMALL WINDOW INTO MY WORLD</span></div>
+        <div class="about-copy"><p class="eyebrow">BEHIND THE STARDUST</p><h2 id="about-title">I'm Aakarshit.<br>You can call me <em>Akki.</em></h2><p>A BBA student from Delhi, exploring the space between business, fashion, technology and creative ideas. Usually curious. Always dreaming up something new.</p><p>I like discovering new things, travelling somewhere unfamiliar, and turning random ideas into something interesting, useful or a little unexpected. Especially when creativity meets a bit of strategy.</p><p>This is a little glimpse into what I love, what I'm learning, and everything I'm still imagining.</p><div class="signature">Aakarshit <span aria-hidden="true">✧</span></div><div class="story-tags"><span>Delhi, India</span><span>BBA student</span><span>Forever curious</span></div></div>
       </div>
-      <div class="about-side">01 / PERSONAL<br>ARCHIVE</div>
-      <div class="floating-ring"></div>
     </section>
-
-    <section class="section interests" id="interests">
-      <div class="interest-head">
-        <div class="section-kicker">A FEW THINGS I KEEP</div>
-        <h2><span>THE IDEAS</span><em>ALIVE.</em></h2>
+    <section class="interests section-wrap" id="interests" aria-labelledby="interests-title">
+      <div class="chapter"><span>02 / LITTLE WONDERS</span><span aria-hidden="true">✧</span><span>FOLLOW THE SPARK</span></div>
+      <div class="section-heading"><p class="eyebrow">A CONSTELLATION OF CURIOSITIES</p><h2 id="interests-title">Things that make my<br>eyes <em>light up.</em></h2><p>Different worlds. A little connection between them all.</p></div>
+      <div class="interest-grid">
+        <details class="interest-card"><summary><span class="card-top"><span class="card-icon">♜</span><span>01</span></span><h3>Business & ideas</h3><p>Big questions. Fresh perspectives.</p><span class="card-bottom">THE STRATEGIST <span class="expand">+</span></span></summary><p class="card-detail">The way a small idea becomes something real. I'm curious about brands, business and the strategy that brings creative thinking to life.</p></details>
+        <details class="interest-card"><summary><span class="card-top"><span class="card-icon">✧</span><span>02</span></span><h3>Fashion & visuals</h3><p>A different way of seeing things.</p><span class="card-bottom">THE CREATIVE <span class="expand">+</span></span></summary><p class="card-detail">Personal style, visual culture, and the details that make something feel different. A mood, a colour, a whole new perspective.</p></details>
+        <details class="interest-card"><summary><span class="card-top"><span class="card-icon">⌘</span><span>03</span></span><h3>Technology & AI</h3><p>A little “what if?” goes a long way.</p><span class="card-bottom">THE EXPLORER <span class="expand">+</span></span></summary><p class="card-detail">Experimenting with websites, new tools and AI. I enjoy exploring what technology makes possible, especially when it opens a door to a creative idea.</p></details>
+        <details class="interest-card"><summary><span class="card-top"><span class="card-icon">☾</span><span>04</span></span><h3>Travel & discovery</h3><p>Some stories start with getting lost.</p><span class="card-bottom">THE DREAMER <span class="expand">+</span></span></summary><p class="card-detail">New places, unexpected details and a change of scenery. Travelling reminds me how much there is to discover beyond the familiar.</p></details>
       </div>
-      <div class="ribbon" aria-hidden="true"></div>
-      <div class="registration">REGISTRATION / 02</div>
-      <div class="interest-list">
-        <a href="#" class="interest-item"><small>01</small><strong>BUSINESS</strong><i>↗</i></a>
-        <a href="#" class="interest-item"><small>02</small><strong>FASHION</strong><i>↗</i></a>
-        <a href="#" class="interest-item"><small>03</small><strong>TECHNOLOGY</strong><i>↗</i></a>
-        <a href="#" class="interest-item"><small>04</small><strong>CREATIVE IDEAS</strong><i>↗</i></a>
-        <a href="#" class="interest-item"><small>05</small><strong>WEBSITES</strong><i>↗</i></a>
-        <a href="#" class="interest-item"><small>06</small><strong>AI</strong><i>↗</i></a>
-        <a href="#" class="interest-item"><small>07</small><strong>VISUAL CULTURE</strong><i>↗</i></a>
-        <a href="#" class="interest-item"><small>08</small><strong>TRAVELLING</strong><i>↗</i></a>
-      </div>
-      <div class="hover-note">HOVER THE WORDS<br>THEY MOVE A LITTLE</div>
+      <p class="interest-hint"><span aria-hidden="true">✦</span> Every curiosity is a door to somewhere new.</p>
     </section>
-
-    <section class="section contact" id="contact">
-      <div class="contact-orbits"></div>
-      <div class="section-kicker">WRITE THIS DOWN <span>NO FORM REQUIRED</span></div>
-      <h2>LET'S MAKE<br><em>SOMETHING</em><br>INTERESTING.</h2>
-      <a class="email" href="mailto:aakarshitkumar@icloud.com">AAKARSHITKUMAR@ICLOUD.COM <span>↗</span></a>
-      <a class="instagram" href="https://www.instagram.com/v4mp_akki/" target="_blank" rel="noreferrer">INSTAGRAM / @V4MP_AKKI ↗</a>
-      <div class="contact-foot">MADE IN DELHI / 2026</div>
+    <section class="contact section-wrap" id="contact" aria-labelledby="contact-title">
+      <div class="chapter"><span>03 / THE NEXT CHAPTER</span><span aria-hidden="true">✧</span><span>IT STARTS WITH HELLO</span></div>
+      <div class="contact-content"><span class="contact-star" aria-hidden="true">✧</span><p class="eyebrow">HAVE AN IDEA, A STORY, OR JUST A HELLO?</p><h2 id="contact-title">Let's make a little<br><em>magic.</em></h2><p>Good things often begin with a conversation.</p><a class="button primary" href="mailto:aakarshitkumar@icloud.com">Say hello <span aria-hidden="true">↗</span></a><a class="email-link" href="mailto:aakarshitkumar@icloud.com">aakarshitkumar@icloud.com</a><a class="social-link" href="https://www.instagram.com/v4mp_akki/" target="_blank" rel="noopener noreferrer">INSTAGRAM / @V4MP_AKKI <span aria-hidden="true">↗</span></a></div>
+      <footer><a class="wordmark" href="#home">aakarshit.</a><span>MADE OF CURIOSITY & A LITTLE STARDUST · 2026</span><a href="#home">Back to the stars ↑</a></footer>
     </section>
   </main>
-
-  <audio id="bgMusic" loop preload="none">
-    <source src="midnight-synthwave.mp3" type="audio/mpeg">
-  </audio>
-
-  <script src="script.js"></script>
+  <p class="sr-only" id="audioStatus" role="status"></p>
+  <audio id="bgMusic" loop autoplay preload="auto" src="assets/beautiful-zen-sounds.mp3"></audio>
 </body>
 </html>

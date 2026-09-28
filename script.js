@@ -1,85 +1,77 @@
-const music = document.getElementById("bgMusic");
-const musicToggle = document.getElementById("musicToggle");
-const dot = document.querySelector(".cursor-dot");
-const ring = document.querySelector(".cursor-ring");
-
-let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-let ringX = mouseX, ringY = mouseY;
-
-window.addEventListener("pointermove", e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  dot.style.left = mouseX + "px";
-  dot.style.top = mouseY + "px";
-});
-
-function cursorLoop(){
-  ringX += (mouseX - ringX) * 0.14;
-  ringY += (mouseY - ringY) * 0.14;
-  ring.style.left = ringX + "px";
-  ring.style.top = ringY + "px";
-  requestAnimationFrame(cursorLoop);
+const starField = document.querySelector('.stars');
+// Deterministic positions keep the sky consistent between visits.
+let seed = 67;
+const random = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+const stars = document.createDocumentFragment();
+for (let i = 0; i < 145; i++) {
+  const star = document.createElement('span');
+  star.className = `star${i % 13 === 0 ? ' cross' : i % 4 === 0 ? ' large' : ''}`;
+  star.style.left = `${random() * 100}%`;
+  star.style.top = `${8 + random() * 78}%`;
+  star.style.setProperty('--duration', `${2 + random() * 4}s`);
+  star.style.setProperty('--delay', `${-random() * 6}s`);
+  stars.append(star);
 }
-cursorLoop();
+starField.append(stars);
 
-document.querySelectorAll("a,button,.interest-item").forEach(el => {
-  el.addEventListener("mouseenter", () => {
-    ring.style.width = "62px";
-    ring.style.height = "62px";
-    ring.style.borderColor = "#fff";
+const fireflies = document.querySelector('.fireflies');
+for (let i = 0; i < 38; i++) {
+  const fly = document.createElement('span');
+  fly.style.cssText = `left:${random()*100}%;top:${60+random()*35}%;--delay:${-random()*20}s;--duration:${9+random()*12}s`;
+  fireflies.append(fly);
+}
+const orbs = document.querySelector('.dream-orbs');
+for (let i = 0; i < 15; i++) {
+  const orb = document.createElement('span');
+  orb.style.cssText = `left:${random()*100}%;top:${random()*100}%;--size:${12+random()*35}px;--delay:${-random()*40}s;--duration:${22+random()*22}s`;
+  orbs.append(orb);
+}
+const music = document.getElementById('bgMusic');
+const musicToggle = document.getElementById('musicToggle');
+const soundLabel = document.getElementById('soundLabel');
+const audioStatus = document.getElementById('audioStatus');
+let manuallyPaused = false;
+let playingAttempt = false;
+music.volume = 0.3;
+function updateSound() {
+  const playing = !music.paused;
+  musicToggle.setAttribute('aria-pressed', String(playing));
+  musicToggle.classList.toggle('is-on', playing);
+  soundLabel.textContent = playing ? 'Mute ambience' : 'Enable ambience';
+}
+async function startAmbience(explicit = false) {
+  if (manuallyPaused || playingAttempt || !music.paused) return;
+  playingAttempt = true;
+  try { await music.play(); audioStatus.textContent = ''; }
+  catch { if (explicit) audioStatus.textContent = 'Audio could not start. Tap Enable ambience to try again.'; }
+  finally { playingAttempt = false; updateSound(); }
+}
+music.addEventListener('play', updateSound);
+music.addEventListener('pause', updateSound);
+musicToggle.addEventListener('click', () => {
+  if (!music.paused) { manuallyPaused = true; music.pause(); }
+  else { manuallyPaused = false; startAmbience(true); }
+});
+// Audible autoplay may require a user gesture. Never restart after an explicit mute.
+for (const event of ['pointerdown', 'keydown']) {
+  document.addEventListener(event, e => {
+    if (!e.target.closest('#musicToggle') && !manuallyPaused) startAmbience();
   });
-  el.addEventListener("mouseleave", () => {
-    ring.style.width = "42px";
-    ring.style.height = "42px";
-    ring.style.borderColor = "#888";
-  });
+}
+startAmbience();
+document.addEventListener('visibilitychange', () => {
+  document.documentElement.classList.toggle('scene-paused', document.hidden);
 });
 
-musicToggle.addEventListener("click", async () => {
-  if (music.paused) {
-    try {
-      await music.play();
-      musicToggle.textContent = "Ⅲ  MUSIC / ON";
-      musicToggle.classList.add("is-on");
-      musicToggle.setAttribute("aria-pressed", "true");
-    } catch {
-      musicToggle.textContent = "Ⅲ  ADD AFTER-DARK.MP3";
-    }
-  } else {
-    music.pause();
-    musicToggle.textContent = "Ⅲ  MUSIC / OFF";
-    musicToggle.classList.remove("is-on");
-    musicToggle.setAttribute("aria-pressed", "false");
-  }
-});
-
-const sections = [...document.querySelectorAll(".section")];
-const navLinks = [...document.querySelectorAll(".index a")];
-
+const navLinks = [...document.querySelectorAll('nav a')];
+const sections = [...document.querySelectorAll('main > section')];
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(link => link.classList.toggle("active", link.dataset.section === entry.target.id));
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    for (const link of navLinks) {
+      if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
     }
-  });
-}, { threshold: 0.45 });
-
+  }
+}, { rootMargin: '-10% 0px -55% 0px', threshold: 0 });
 sections.forEach(section => observer.observe(section));
-
-document.querySelectorAll(".interest-item").forEach(item => {
-  item.addEventListener("mousemove", e => {
-    const r = item.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - .5;
-    const y = (e.clientY - r.top) / r.height - .5;
-    item.style.transform = `translate(${x * 22}px, ${y * 5}px)`;
-  });
-  item.addEventListener("mouseleave", () => item.style.transform = "");
-});
-
-window.addEventListener("pointermove", e => {
-  const x = e.clientX / window.innerWidth - .5;
-  const y = e.clientY / window.innerHeight - .5;
-  document.querySelector(".hero-orbit.orbit-one").style.transform = `rotate(-24deg) translate(${x * 10}px, ${y * 8}px)`;
-  document.querySelector(".hero-orbit.orbit-two").style.transform = `rotate(-24deg) translate(${x * -15}px, ${y * -10}px)`;
-  document.querySelector(".ribbon").style.transform = `rotate(${23 + x * 4}deg) skewY(-7deg) translate(${x * 12}px, ${y * 8}px)`;
-});
