@@ -791,8 +791,8 @@ footer>a:last-child {
 main{position:relative;z-index:1}
 .hero{background:none;isolation:auto}
 .hero-content,.hero-bottom{z-index:1}
-.about,.interests,.contact{background:linear-gradient(90deg,#080e26ed,#080e26c9 50%,#080e26ed);backdrop-filter:blur(3px)}
-.about{border-top:1px solid #d5c39a18}
+.about,.interests,.contact{background:transparent;backdrop-filter:none}
+.about{border-top:0}
 .night-scene .stars{z-index:3}
 .night-scene .star{filter:blur(.65px);animation:twinkle var(--duration) ease-in-out infinite alternate,star-drift 32s ease-in-out infinite alternate;animation-delay:var(--delay)}
 .night-scene .star.large{filter:blur(1.2px);box-shadow:0 0 13px 2px #e0d0ff70}
@@ -812,5 +812,32 @@ main{position:relative;z-index:1}
 @keyframes firefly-drift{0%{transform:translate3d(0,0,0);opacity:.15}40%{opacity:.85}100%{transform:translate3d(35px,-60px,0);opacity:.25}}
 @keyframes deer-breathe{50%{transform:scaleY(1.018) rotate(.3deg)}}
 @keyframes owl-flight{0%{transform:translate(-100px,270px);opacity:0}10%,85%{opacity:.45}50%{transform:translate(780px,185px)}100%{transform:translate(1700px,260px);opacity:0}}
-@media(max-width:600px){.night-scene .landscape{height:40vh;min-height:300px}.night-scene .moon{top:145px}.wildlife{width:160%;left:-30%}.about,.interests,.contact{backdrop-filter:none;background:#080e26db}}
+@media(max-width:600px){.night-scene .landscape{height:40vh;min-height:300px}.night-scene .moon{top:145px}.wildlife{width:160%;left:-30%}.about,.interests,.contact{backdrop-filter:none;background:transparent}}
 @media(prefers-reduced-motion:reduce){.night-scene *{animation:none!important}.owl-flight{transform:translate(1100px,250px)}.star{opacity:.55}}
+
+/* One continuous, larger dreamscape shared by every chapter. */
+.night-scene .landscape{width:120%;left:-10%;height:74%;max-width:none;object-fit:fill}
+.night-scene .moon{width:94px;height:94px;right:12%;top:15%;box-shadow:0 0 70px #ffecba35,0 0 180px #c1b6ff30}
+.night-scene .moon:after{width:93px;height:93px;left:-18px;top:-11px}
+.night-scene:after{content:'';position:absolute;inset:0;z-index:6;background:radial-gradient(ellipse at 50% 42%,#080e2660,transparent 75%),linear-gradient(#080e261a,#080e2626);pointer-events:none}
+.hero-content,h2,.about-copy,.section-heading,.contact-content{text-shadow:0 2px 24px #050a20,0 1px 6px #050a20}
+.about-copy>p:not(.eyebrow),.section-heading>p:last-child,.contact-content>p:not(.eyebrow){color:#d1d6e6}
+.chapter{color:#bbc4dc;border-color:#c9d0e929}
+.interest-card{background:#10192bc9;backdrop-filter:blur(8px)}
+.aurora{top:-10%;height:100%;filter:blur(30px);background:radial-gradient(ellipse at 35% 45%,#74c5b433,transparent 48%),radial-gradient(ellipse at 75% 40%,#ab79d345,transparent 52%);animation-duration:18s}
+.dream-cloud{position:absolute;width:85%;height:24%;left:-20%;border-radius:50%;filter:blur(35px);background:radial-gradient(ellipse,#adacd326,transparent 68%);animation:cloud-sail 42s ease-in-out infinite alternate;z-index:3}
+.cloud-one{top:25%;animation-delay:-12s}.cloud-two{top:55%;left:30%;animation-direction:alternate-reverse;opacity:.7}.cloud-three{bottom:-5%;width:120%;height:35%;animation-delay:-27s;opacity:.6}
+.light-ribbons{position:absolute;inset:0;width:100%;height:100%;filter:blur(5px);z-index:1;overflow:visible;animation:ribbon-float 19s ease-in-out infinite alternate}
+.light-ribbons path{stroke:url(#ribbon-glow);stroke-width:3;fill:none;stroke-dasharray:400 1500;animation:ribbon-flow 22s linear infinite}
+.light-ribbons path:nth-child(2){stroke-width:12;opacity:.3;animation-delay:-8s}.light-ribbons path:nth-child(3){stroke-width:2;opacity:.65;animation-delay:-15s}
+.dream-orbs{position:absolute;inset:0;z-index:4}.dream-orbs span{position:absolute;width:var(--size);height:var(--size);border-radius:50%;background:radial-gradient(circle,#e4d4ff55,#acb9ed15 45%,transparent 72%);filter:blur(3px);animation:orb-float var(--duration) ease-in-out infinite alternate;animation-delay:var(--delay)}
+.fireflies span{width:5px;height:5px;box-shadow:0 0 15px 4px #f6d58965}
+.night-scene .star.large{width:4px;height:4px;filter:blur(1.6px)}
+.lake-shimmer{position:absolute;left:39%;bottom:8%;width:33%;height:28%;z-index:3;background:repeating-linear-gradient(0deg,transparent 0 17px,#c9bce120 18px,transparent 20px 31px);mask-image:radial-gradient(ellipse,#000,transparent 67%);animation:water-glimmer 7s ease-in-out infinite alternate;filter:blur(1px)}
+@keyframes cloud-sail{to{transform:translate3d(35%,8%,0) scale(1.2)}}
+@keyframes ribbon-flow{to{stroke-dashoffset:-1900}}
+@keyframes ribbon-float{to{transform:translate3d(0,-4%,0) rotate(4deg)}}
+@keyframes orb-float{0%{transform:translate3d(-25px,50px,0) scale(.65);opacity:.25}50%{opacity:.75}100%{transform:translate3d(70px,-100px,0) scale(1.2);opacity:.35}}
+@keyframes water-glimmer{to{transform:translateY(8px) scaleX(1.13);opacity:.35}}
+@media(max-width:600px){.night-scene .landscape{width:200%;left:-50%;height:68%;min-height:0}.night-scene .moon{width:57px;height:57px;top:16%;right:9%}.night-scene .moon:after{width:56px;height:56px;left:-12px;top:-7px}.light-ribbons{width:160%;left:-30%}.dream-orbs span:nth-child(even){display:none}.dream-cloud{filter:blur(25px)}.interest-card{backdrop-filter:none}.lake-shimmer{left:35%;width:50%;bottom:8%}}
+@media(prefers-reduced-motion:reduce){.night-scene *{animation:none!important}.light-ribbons{opacity:.3}}

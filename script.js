@@ -3,7 +3,7 @@ const starField = document.querySelector('.stars');
 let seed = 67;
 const random = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
 const stars = document.createDocumentFragment();
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 145; i++) {
   const star = document.createElement('span');
   star.className = `star${i % 13 === 0 ? ' cross' : i % 4 === 0 ? ' large' : ''}`;
   star.style.left = `${random() * 100}%`;
@@ -15,10 +15,16 @@ for (let i = 0; i < 100; i++) {
 starField.append(stars);
 
 const fireflies = document.querySelector('.fireflies');
-for (let i = 0; i < 22; i++) {
+for (let i = 0; i < 38; i++) {
   const fly = document.createElement('span');
   fly.style.cssText = `left:${random()*100}%;top:${60+random()*35}%;--delay:${-random()*20}s;--duration:${9+random()*12}s`;
   fireflies.append(fly);
+}
+const orbs = document.querySelector('.dream-orbs');
+for (let i = 0; i < 15; i++) {
+  const orb = document.createElement('span');
+  orb.style.cssText = `left:${random()*100}%;top:${random()*100}%;--size:${12+random()*35}px;--delay:${-random()*40}s;--duration:${22+random()*22}s`;
+  orbs.append(orb);
 }
 const music = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
