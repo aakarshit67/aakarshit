@@ -31,10 +31,13 @@ const musicToggle = document.getElementById('musicToggle');
 const soundLabel = document.getElementById('soundLabel');
 const audioStatus = document.getElementById('audioStatus');
 let manuallyPaused = false;
+try { manuallyPaused = sessionStorage.getItem('ambienceMuted') === 'true'; } catch {}
+if (manuallyPaused) { music.autoplay = false; music.pause(); }
 let playingAttempt = false;
 music.volume = 0.3;
 function updateSound() {
   const playing = !music.paused;
+  try { sessionStorage.setItem('ambienceMuted', String(manuallyPaused)); } catch {}
   musicToggle.setAttribute('aria-pressed', String(playing));
   musicToggle.classList.toggle('is-on', playing);
   soundLabel.textContent = playing ? 'Mute ambience' : 'Enable ambience';
@@ -63,15 +66,6 @@ document.addEventListener('visibilitychange', () => {
   document.documentElement.classList.toggle('scene-paused', document.hidden);
 });
 
-const navLinks = [...document.querySelectorAll('nav a')];
-const sections = [...document.querySelectorAll('main > section')];
-const observer = new IntersectionObserver(entries => {
-  for (const entry of entries) {
-    if (!entry.isIntersecting) continue;
-    for (const link of navLinks) {
-      if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    }
-  }
-}, { rootMargin: '-10% 0px -55% 0px', threshold: 0 });
-sections.forEach(section => observer.observe(section));
+// Preserve older links to sections now hosted on their own pages.
+const oldRoutes = { '#about': 'my-story.html', '#interests': 'little-wonders.html', '#contact': 'say-hello.html' };
+if (oldRoutes[location.hash] && document.querySelector('#home')) location.replace(oldRoutes[location.hash]);

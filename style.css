@@ -155,13 +155,13 @@ nav a[aria-current]:after {
   height:1px;
   background:var(--gold);
   opacity:.55}
-h1,h2,h3,p {
+h1,:is(h2,.page-title),h3,p {
   margin-top:0}
 h1 {
   font:400 clamp(60px,6.1vw,96px)/1.04 var(--serif);
   letter-spacing:-2.7px;
   margin:25px 0 22px}
-h1 em,h2 em {
+h1 em,:is(h2,.page-title) em {
   font-weight:400;
   color:var(--gold)}
 .hero-intro {
@@ -388,7 +388,7 @@ h1 em,h2 em {
 .about-copy .eyebrow {
   justify-content:flex-start;
   font-size:8px}
-h2 {
+:is(h2,.page-title) {
   font:400 clamp(44px,4.5vw,65px)/1.05 var(--serif);
   letter-spacing:-1.6px;
   margin-bottom:25px}
@@ -420,7 +420,7 @@ h2 {
 .section-heading {
   text-align:center;
   padding:51px 0 30px}
-.section-heading h2 {
+.section-heading :is(h2,.page-title) {
   margin:20px 0}
 .section-heading>p:last-child {
   font-size:12px;
@@ -505,7 +505,7 @@ h3 {
   font-size:53px;
   color:var(--gold);
   margin-bottom:20px}
-.contact-content h2 {
+.contact-content :is(h2,.page-title) {
   font-size:clamp(58px,6vw,88px);
   margin:25px 0 18px}
 .contact-content>p:not(.eyebrow) {
@@ -709,7 +709,7 @@ h1 {
   font-size:6px}
 .about-copy .eyebrow {
   font-size:7px}
-.about-copy h2 {
+.about-copy :is(h2,.page-title) {
   font-size:47px}
 .about-copy>p:not(.eyebrow) {
   font-size:12px}
@@ -718,7 +718,7 @@ h1 {
 .section-heading .eyebrow {
   font-size:7px;
   letter-spacing:2px}
-.section-heading h2 {
+.section-heading :is(h2,.page-title) {
   font-size:48px}
 .section-heading>p:last-child {
   font-size:10px}
@@ -754,7 +754,7 @@ h3 {
 .contact-content .eyebrow {
   font-size:6px;
   letter-spacing:1.5px}
-.contact-content h2 {
+.contact-content :is(h2,.page-title) {
   font-size:63px}
 .contact-star {
   font-size:43px}
@@ -820,7 +820,7 @@ main{position:relative;z-index:1}
 .night-scene .moon{width:94px;height:94px;right:12%;top:15%;box-shadow:0 0 70px #ffecba35,0 0 180px #c1b6ff30}
 .night-scene .moon:after{width:93px;height:93px;left:-18px;top:-11px}
 .night-scene:after{content:'';position:absolute;inset:0;z-index:6;background:radial-gradient(ellipse at 50% 42%,#080e2660,transparent 75%),linear-gradient(#080e261a,#080e2626);pointer-events:none}
-.hero-content,h2,.about-copy,.section-heading,.contact-content{text-shadow:0 2px 24px #050a20,0 1px 6px #050a20}
+.hero-content,:is(h2,.page-title),.about-copy,.section-heading,.contact-content{text-shadow:0 2px 24px #050a20,0 1px 6px #050a20}
 .about-copy>p:not(.eyebrow),.section-heading>p:last-child,.contact-content>p:not(.eyebrow){color:#d1d6e6}
 .chapter{color:#bbc4dc;border-color:#c9d0e929}
 .interest-card{background:#10192bc9;backdrop-filter:blur(8px)}
@@ -841,3 +841,10 @@ main{position:relative;z-index:1}
 @keyframes water-glimmer{to{transform:translateY(8px) scaleX(1.13);opacity:.35}}
 @media(max-width:600px){.night-scene .landscape{width:200%;left:-50%;height:68%;min-height:0}.night-scene .moon{width:57px;height:57px;top:16%;right:9%}.night-scene .moon:after{width:56px;height:56px;left:-12px;top:-7px}.light-ribbons{width:160%;left:-30%}.dream-orbs span:nth-child(even){display:none}.dream-cloud{filter:blur(25px)}.interest-card{backdrop-filter:none}.lake-shimmer{left:35%;width:50%;bottom:8%}}
 @media(prefers-reduced-motion:reduce){.night-scene *{animation:none!important}.light-ribbons{opacity:.3}}
+
+.inner-page main{padding-top:120px;min-height:100svh}
+.inner-page .section-wrap{min-height:calc(100svh - 120px)}
+.inner-page .about{padding-top:0}
+.inner-page .page-title{font-weight:400}
+.inner-page .contact-content{padding-top:15px;padding-bottom:45px}
+@media(max-width:600px){.inner-page main{padding-top:135px}.inner-page .section-wrap{min-height:calc(100svh - 135px)}}
